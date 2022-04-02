@@ -9,6 +9,6 @@ export default async function selectImage(element: string) {
     const result = await ImagePicker.openPicker(option);
     return Promise.resolve(result);
   } catch {
-    return Promise.reject('error');
+    return Promise.reject('cancel');
   }
 }
