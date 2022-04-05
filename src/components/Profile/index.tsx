@@ -1,5 +1,13 @@
+// import styles from './style.scss';
 import React, { useState } from 'react';
-import { Image, View, StyleSheet, Pressable, Text } from 'react-native';
+import {
+  ScrollView,
+  Image,
+  View,
+  StyleSheet,
+  Pressable,
+  Text,
+} from 'react-native';
 import { accessAlbum } from '../../utils';
 
 export default function Profile() {
@@ -17,31 +25,50 @@ export default function Profile() {
   };
 
   return (
-    <View style={styles.container}>
-      <View>
+    <ScrollView style={styles.container}>
+      <View style={styles.title}>
+        <Text style={styles.h1}>프로필 사진을 설정해보세요</Text>
+        <Text style={styles.h2}>
+          다른 사용자에게 공개돼요! {'\n'}꼭 본인 사진이 아니여도 좋아요
+        </Text>
+      </View>
+      <View style={styles.content}>
         <Pressable onPress={setProfilePhoto}>
-          {image !== '' && (
-            <Image source={{ uri: image }} style={styles.profile} />
-          )}
+          <Image source={{ uri: image }} style={styles.profile} />
         </Pressable>
         <Pressable onPress={setProfilePhoto} style={styles.button}>
           <Text style={styles.text}>프로필 설정하기</Text>
         </Pressable>
       </View>
-    </View>
+    </ScrollView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
+    marginTop: 45,
     flex: 1,
+  },
+  title: {
+    marginLeft: 30,
+    marginBottom: 30,
+  },
+  h1: {
+    fontSize: 25,
+    fontWeight: '800',
+  },
+  h2: {
+    fontSize: 16,
+    color: 'gray',
+  },
+  content: {
     alignItems: 'center',
-    marginTop: 100,
   },
   button: {
+    width: 100,
+    alignItems: 'center',
     borderRadius: 4,
     paddingVertical: 4,
-    paddingHorizontal: 10,
     marginTop: 5,
     backgroundColor: '#ff5c66',
   },
@@ -55,10 +82,5 @@ const styles = StyleSheet.create({
     width: 150,
     height: 150,
     borderRadius: 80,
-  },
-  album: {
-    width: 100,
-    height: 100,
-    display: 'flex',
   },
 });

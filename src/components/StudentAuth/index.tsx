@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import {
+  ScrollView,
   View,
   Text,
   Pressable,
@@ -28,45 +29,36 @@ export default function StudentAuth() {
   };
 
   return (
-    <>
-      <View style={styles.container}>
-        <View style={styles.title}>
-          <Text style={styles.h1}>학생증을 인증해주세요</Text>
-          <Text style={styles.h2}>모바일 학생증 캡쳐사진을 첨부해주세요!</Text>
-        </View>
-        <View style={styles.content}>
-          <Pressable onPress={attachStdIdPhoto}>
-            <Image source={{ uri: image }} style={styles.stdIdImage} />
-          </Pressable>
-          <Pressable onPress={attachStdIdPhoto} style={styles.button}>
-            <Text>학생증 첨부</Text>
-          </Pressable>
-          <View style={styles.info}>
-            <Text>단과대학</Text>
-            <TextInput value={userSchoolInfo?.college} style={styles.input} />
-            <Text>학과(부)</Text>
-            <TextInput
-              value={userSchoolInfo?.department}
-              style={styles.input}
-            />
-            <Text>학번</Text>
-            <TextInput
-              value={userSchoolInfo?.studentNum}
-              style={styles.input}
-            />
-            <Text>이름</Text>
-            <TextInput value={userSchoolInfo?.userName} style={styles.input} />
-          </View>
+    <ScrollView style={styles.container}>
+      <View style={styles.title}>
+        <Text style={styles.h1}>학생증을 인증해주세요</Text>
+        <Text style={styles.h2}>모바일 학생증 캡쳐사진을 첨부해주세요!</Text>
+      </View>
+      <View style={styles.content}>
+        <Pressable onPress={attachStdIdPhoto}>
+          <Image source={{ uri: image }} style={styles.stdIdImage} />
+        </Pressable>
+        <Pressable onPress={attachStdIdPhoto} style={styles.button}>
+          <Text style={styles.text}>학생증 첨부</Text>
+        </Pressable>
+        <View style={styles.info}>
+          <Text>단과대학</Text>
+          <TextInput value={userSchoolInfo?.college} style={styles.input} />
+          <Text>학과(부)</Text>
+          <TextInput value={userSchoolInfo?.department} style={styles.input} />
+          <Text>학번</Text>
+          <TextInput value={userSchoolInfo?.studentNum} style={styles.input} />
+          <Text>이름</Text>
+          <TextInput value={userSchoolInfo?.userName} style={styles.input} />
         </View>
       </View>
-    </>
+    </ScrollView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     marginTop: 45,
-    overflow: 'scroll',
     flex: 1,
   },
   title: {
@@ -78,7 +70,8 @@ const styles = StyleSheet.create({
     fontWeight: '800',
   },
   h2: {
-    fontSize: 17,
+    fontSize: 16,
+    color: 'gray',
   },
   content: {
     alignItems: 'center',
@@ -93,6 +86,12 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
     marginTop: 5,
     backgroundColor: '#ff5c66',
+  },
+  text: {
+    fontSize: 13,
+    lineHeight: 18,
+    fontWeight: '600',
+    color: 'white',
   },
   info: {
     margin: 12,
